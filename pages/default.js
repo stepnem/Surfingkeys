@@ -126,6 +126,11 @@ mapkey('gf', '#1Open a link in non-active new tab', function() {
 mapkey('cf', '#1Open multiple links in a new tab', function() {
     Hints.create("", Hints.dispatchMouseClick, {multipleHits: true});
 });
+mapkey('O', '#1Open detected links from text', function() {
+    Hints.create(runtime.conf.clickablePat, function(element) {
+        window.location.assign(element[2]);
+    }, {statusLine: "Open detected links from text"});
+});
 map('C', 'gf');
 mapkey('<Ctrl-h>', '#1Mouse over elements.', function() {
     Hints.create("", Hints.dispatchMouseClick, {mouseEvents: ["mouseover"]});
@@ -194,11 +199,6 @@ mapkey('I', '#1Go to edit box with vim editor', function() {
     Hints.create("input, textarea, *[contenteditable=true], select", function(element) {
         Front.showEditor(element);
     });
-});
-mapkey('O', '#1Open detected links from text', function() {
-    Hints.create(runtime.conf.clickablePat, function(element) {
-        window.location.assign(element[2]);
-    }, {statusLine: "Open detected links from text"});
 });
 
 mapkey(';s', 'Toggle PDF viewer from SurfingKeys', function() {
