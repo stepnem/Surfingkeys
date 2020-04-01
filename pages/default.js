@@ -127,9 +127,9 @@ mapkey('cf', '#1Open multiple links in a new tab', function() {
     Hints.create("", Hints.dispatchMouseClick, {multipleHits: true});
 });
 mapkey('O', '#1Open detected links from text', function() {
-    Hints.create(runtime.conf.clickablePat, function(element) {
-        window.location.assign(element[2]);
-    }, {statusLine: "Open detected links from text"});
+    Hints.create(runtime.conf.clickablePat, Hints.openTextLink,
+                 {statusLine:
+                  "Open detected link from text (Shift for new tab)"});
 });
 map('C', 'gf');
 mapkey('<Ctrl-h>', '#1Mouse over elements.', function() {

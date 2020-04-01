@@ -563,6 +563,17 @@ function createHints() {
         setTimeout(function () { flashElem.remove(); }, 300);
     };
 
+    // the default 'O' mapping
+    self.openTextLink = function(element) {
+        RUNTIME("openLink", {
+            tab: {
+                tabbed: shiftKey,
+                active: true
+            },
+            url: element[2]
+        });
+    };
+
     self.dispatchMouseClick = function(element) {
         self.flashPressedLink(element);
         if (isEditable(element)) {
