@@ -563,7 +563,7 @@ function createHints() {
         setTimeout(function () { flashElem.remove(); }, 300);
     };
 
-    self.dispatchMouseClick = function(element, event) {
+    self.dispatchMouseClick = function(element) {
         self.flashPressedLink(element);
         if (isEditable(element)) {
             self.exit();
