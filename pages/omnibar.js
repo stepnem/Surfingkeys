@@ -406,7 +406,7 @@ var Omnibar = (function() {
             rotateResult(runtime.conf.omnibarPosition !== "bottom");
         }
     });
-    self.mappings.add(KeyboardUtils.encodeKeystroke("<Ctrl-'>"), {
+    self.mappings.add(KeyboardUtils.encodeKeystroke('<Ctrl-">'), {
         annotation: "Toggle quotes in an input element",
         feature_group: 8,
         code: toggleQuote
