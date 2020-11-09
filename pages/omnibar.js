@@ -190,6 +190,28 @@ var Omnibar = (function() {
         },
     });
 
+    for (let i = 0; i < 10; i++) {
+        let index = i - 1;
+        if (index < 0) index = 9;
+        self.mappings.add(KeyboardUtils.encodeKeystroke(`<Ctrl-${i}>`), {
+            annotation: `Open item no. ${i === 0 ? 10 : i}`,
+            feature_group: 8,
+            code: function () {
+                const items = Array.from(Omnibar.resultsDiv.querySelectorAll('#sk_omnibarSearchResult>ul>li'));
+                let url = items[index].url;
+                if (url) {
+                    RUNTIME("openLink", {
+                        tab: {
+                            tabbed: true,
+                            active: true
+                        },
+                        url: url
+                    });
+                }
+            }
+        });
+    }
+
     self.mappings.add(KeyboardUtils.encodeKeystroke("<Ctrl-D>"), {
         annotation: "Delete all listed items from bookmark or history",
         feature_group: 8,
