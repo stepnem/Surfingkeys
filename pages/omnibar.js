@@ -178,14 +178,16 @@ var Omnibar = (function() {
     });
 
     self.mappings.add(KeyboardUtils.encodeKeystroke("<Ctrl-c>"), {
-        annotation: "Copy all listed items",
+        annotation:    "Copy selected URL to the clipboard",
         feature_group: 8,
         code: function () {
-            // hide Omnibar.input, so that we could use clipboard_holder to make copy
-            self.input.style.display = "none";
-            Clipboard.write(JSON.stringify(_page, null, 4));
-            self.input.style.display = "";
-        }
+            const fi = Omnibar.resultsDiv.querySelector("li.focused");
+            if (fi && fi.url) {
+                self.input.style.display = "none";
+                Clipboard.write(fi.url);
+                self.input.style.display = "";
+            }
+        },
     });
 
     self.mappings.add(KeyboardUtils.encodeKeystroke("<Ctrl-D>"), {
